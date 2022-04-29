@@ -214,12 +214,14 @@ assign [class="zoom"] $ws3
 assign [class="Firefox"] $ws10
 assign [class="Wfica"] $ws5
 assign [class="KeePassXC"] $ws8
+assign [class="KeePass2"] $ws8
 
 #Custom shortcuts
 bindsym $mod+b exec google-chrome
 bindsym $mod+m exec google-chrome --app=https://mail.google.com/
 bindsym $mod+c exec google-chrome --app=https://calendar.google.com/
 bindsym $mod+Control+l exec i3lock -i /home/raymond/Pictures/temp1.png -p default -n
+bindsym $mod+p exec keepass2
 
 # Workspace assignment
 workspace $ws1 output HDMI1
@@ -239,7 +241,8 @@ exec xrandr --output HDMI-1 --primary --right-of HDMI-2
 exec slack
 exec i3-msg 'workspace $ws4; exec google-chrome --app=https://mail.google.com/'
 exec i3-msg 'workspace $ws4; exec google-chrome --app=https://calendar.google.com/'
-exec google-drive-ocamlfuse ~/Documents/google-drive
+exec rclone --vfs-cache-mode writes mount GDrive_Work: ~/GoogleDrive/Work
+exec xbindkeys -f ~/.xbindkeysrc
 
 # Reloads
 exec_always feh --bg-scale --no-xinerama /home/raymond/Pictures/temp3.jpg
